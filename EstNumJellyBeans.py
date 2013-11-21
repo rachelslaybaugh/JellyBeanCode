@@ -10,13 +10,16 @@ class NumJellyEstimator:
     def __init__(self):
 
         # The number of jelly beans in the world is correlated to the fraction
-        # of land used for sugar and the world population.
+        # of land used for sugar, the world population, and the fraction of 
+        # people who like the color pink.
         ## Fraction of land used for growing sugar
         self.fracLand4Sugar = 0.0
         ## World population
         self.worldPop = 0
         ## Scaling constant used in estimate
         self.scalingConst = 1e-1
+        ## Fraction of people who love the color pink.
+        self.fracPplLovingPink = 0.0
 
 
     ## Set the fraction of land used for sugar.
@@ -50,6 +53,22 @@ class NumJellyEstimator:
         self.worldPop = people
 
 
+    ## Set the fraction of people who love the color pink.
+    def set_frac_ppl_loving_pink(self, frac):
+
+        # Make sure we've got a float.
+        frac = float(frac)
+
+        # Check that the value is between zero and one.
+        if ((frac <= 0.0) or (frac >= 1.0)):
+            print "\nError: Fraction of people who love pink must be between"\
+                  +" 0 and 1.\n"
+            sys.exit()
+
+        # Store the fraction.
+        self.fracPplLovingPink = frac
+
+
     ## Return the scaling constant so the user can check it if they want.
     def get_scaling_const(self):
 
@@ -64,6 +83,19 @@ class NumJellyEstimator:
         if (n == 0.0):
             print "\nError: fraction of land for sugar and world population"\
                   +"must be set before computing estimate.\n"
+        return int(n)
+
+
+    ## Estimate the number of jelly beans in the world using the new pink data,
+    def compute_Njelly_pink_est(self):
+
+        n = self.fracLand4Sugar * self.worldPop * self.scalingConst / \
+            (1.0 - self.fracPplLovingPink)
+        # If this value is zero, it means that some value didn't get set.
+        if (n == 0.0):
+            print "\nError: fraction of land for sugar, world population, and"\
+                  +"fraction of people loving pink must be set before "\
+                  +"computing estimate.\n"
         return int(n)
 
 
