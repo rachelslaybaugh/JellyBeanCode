@@ -30,6 +30,19 @@ if (est == ref):
 else:
     failed.append(test)
 
+## ------ Test the estimate with pink added ----- ##
+pink_frac = 0.18
+estimator.set_frac_ppl_loving_pink(pink_frac)
+ref = int(frac*ppl*val / (1.0 - pink_frac))
+
+# Get the estimate and check that it is the same as our reference.
+test = 'jelly_est_with_pink'
+est = estimator.compute_Njelly_pink_est()
+if (est == ref):
+    passed.append(test)
+else:
+    failed.append(test)
+
 
 # Print the results of our tests.
 print "\n-----------------------------------------------------"
