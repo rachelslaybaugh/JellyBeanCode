@@ -1,6 +1,4 @@
 Jelly Bean Code
-
-example change
 ========
 
 The Jelly Bean Code was originally created as a Software Carpentry
