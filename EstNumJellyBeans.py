@@ -86,7 +86,7 @@ class NumJellyEstimator:
         return int(n)
 
 
-    ## Estimate the number of jelly beans in the world using the new pink data,
+    ## Estimate the number of jelly beans in the world using the new pink data.
     def compute_Njelly_pink_est(self):
 
         n = self.fracLand4Sugar * self.worldPop * self.scalingConst / \
