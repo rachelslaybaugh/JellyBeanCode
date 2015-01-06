@@ -59,12 +59,6 @@ class NumJellyEstimator:
         # Make sure we've got a float.
         frac = float(frac)
 
-        # Check that the value is between zero and one.
-        if ((frac <= 0.0) or (frac >= 1.0)):
-            print "\nError: Fraction of people who love pink must be between"\
-                  +" 0 and 1.\n"
-            sys.exit()
-
         # Store the fraction.
         self.fracPplLovingPink = frac
 
