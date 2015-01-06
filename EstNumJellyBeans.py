@@ -1,4 +1,4 @@
-#!/Vendors/anaconda/bin/python
+#!/home/Install/anaconda/bin/python
 
 import sys
 
