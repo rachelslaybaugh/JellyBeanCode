@@ -1,6 +1,7 @@
 #!/home/Install/anaconda/bin/python
 
-import EstNumJellyBeans as jelly
+#import EstNumJellyBeans as jelly
+import thwJellyBeanCode as jelly
 
 # Get a jelly bean estimator
 estimator = jelly.NumJellyEstimator()
