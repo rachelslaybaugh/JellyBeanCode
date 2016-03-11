@@ -1,8 +1,6 @@
 Jelly Bean Code
 ========
 
-Bienvenue
-
 The Jelly Bean Code was originally created as a Software Carpentry
 Instructor final project. 
 

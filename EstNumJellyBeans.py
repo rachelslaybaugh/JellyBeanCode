@@ -3,15 +3,15 @@
 import sys
 
 ## This class estimates the number of jelly beans in the world using input data
-#  determined to be correlated to this result.
+# determined to be correlated to this result.
+# The number of jelly beans in the world is correlated to the fraction
+# of land used for sugar, the world population, and the fraction of 
+# people who like the color pink.
 class NumJellyEstimator:
 
     ## Instantiating the class initializes some variables.
     def __init__(self):
 
-        # The number of jelly beans in the world is correlated to the fraction
-        # of land used for sugar, the world population, and the fraction of 
-        # people who like the color pink.
         ## Fraction of land used for growing sugar
         self.fracLand4Sugar = 0.0
         ## World population
@@ -23,15 +23,17 @@ class NumJellyEstimator:
 
 
     ## Set the fraction of land used for sugar.
+    # \param frac fraction of land used for sugar (float between 0 and 1)
     def set_land_frac_for_sugar(self, frac):
 
         # Make sure we've got a float.
-        frac = float(frac) 
+        assert type(frac) is float, \
+            "Error: fraction of land set must be a float."
 
         # Check that the value is between zero and one.
         if ((frac <= 0.0) or (frac >= 1.0)):
             print "\nError: Fraction of land used for sugar must be between"\
-                  +" 0 and 1.\n"
+                  +" 0.0 and 1.0.\n"
             sys.exit()
 
         # Store the fraction.
@@ -39,19 +41,12 @@ class NumJellyEstimator:
 
 
     ## Set the world population
+    # \param people integer number of people on earth
     def set_world_pop(self, people):
 
-        # Make sure we've got an int.
-        people = int(people)
-
-        # Check that the value is between zero and 1e20.
-	assert (people >=0) and (people <=1e20), "Wrong number of people"
-
-	
-
-        if ((people <= 0) or (people >= 1e20)):
-            print "\nError: World population must be between 0 and 1e20.\n"
-            sys.exit()
+        # NE24: Add a test for type here
+ 
+        # NE24: Add a test for value here
 
         # Store the fraction.
         self.worldPop = people
@@ -60,10 +55,9 @@ class NumJellyEstimator:
     ## Set the fraction of people who love the color pink.
     def set_frac_ppl_loving_pink(self, frac):
 
-        # Make sure we've got a float.
-        frac = float(frac)
+        # NE24: Add a test for type here
 
-	assert type(frac) is float, "Wrong type"
+        # NE24: Add a test for value here
 
         # Store the fraction.
         self.fracPplLovingPink = frac
@@ -76,7 +70,9 @@ class NumJellyEstimator:
 
 
     ## Estimate the number of jelly beans in the world.
-    def compute_Njelly_est(self):
+    # This is based on a previous understanding of the estimate that did not
+    # take the color pink into account. Still supported for legacy reasons.
+    def compute_Njelly_est_nopink(self):
 
         n = self.fracLand4Sugar * self.worldPop * self.scalingConst
         # If this value is zero, it means that some value didn't get set.
@@ -87,7 +83,7 @@ class NumJellyEstimator:
 
 
     ## Estimate the number of jelly beans in the world using the new pink data.
-    def compute_Njelly_pink_est(self):
+    def compute_Njelly_est(self):
 
         n = self.fracLand4Sugar * self.worldPop * self.scalingConst / \
             (1.0 - self.fracPplLovingPink)
@@ -96,6 +92,9 @@ class NumJellyEstimator:
             print "\nError: fraction of land for sugar, world population, and"\
                   +"fraction of people loving pink must be set before "\
                   +"computing estimate.\n"
+
+        # NE24: What other checks might be useful? What is a better way to do this?
+
         return int(n)
 
 
