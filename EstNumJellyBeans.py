@@ -1,4 +1,4 @@
-#!/home/Install/anaconda/bin/python
+#!/Users/slayer/Software/Install/anaconda2/bin/python
 
 import sys
 

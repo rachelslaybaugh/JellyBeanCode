@@ -1,6 +1,5 @@
-#!/home/Install/anaconda/bin/python
+#!/Users/slayer/Software/Install/anaconda2/bin/python
 
-#import EstNumJellyBeans as jelly
 import EstNumJellyBeans as jelly
 
 # Get a jelly bean estimator
